@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Zpheree/imagequiz/static/css/main.073c9b0a.css",
+    "main.js": "/Zpheree/imagequiz/static/js/main.787d932e.js",
+    "static/js/787.553ac779.chunk.js": "/Zpheree/imagequiz/static/js/787.553ac779.chunk.js",
+    "static/media/logo.svg": "/Zpheree/imagequiz/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Zpheree/imagequiz/index.html",
+    "main.073c9b0a.css.map": "/Zpheree/imagequiz/static/css/main.073c9b0a.css.map",
+    "main.787d932e.js.map": "/Zpheree/imagequiz/static/js/main.787d932e.js.map",
+    "787.553ac779.chunk.js.map": "/Zpheree/imagequiz/static/js/787.553ac779.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.787d932e.js"
+  ]
+}
