@@ -6,10 +6,9 @@ import Col from 'react-bootstrap/Col';
 import Home from './Components/Home';
 import Register from './Components/Register';
 import Login from './Components/Login';
-import Header from './Components/Login';
-import Footer from './Components/Login';
-import Menu from './Components/Login';
-
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Menu from './Components/Menu';
 
 function App() {
   return (
