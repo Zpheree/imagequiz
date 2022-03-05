@@ -1,22 +1,49 @@
 import './App.css';
 import {HashRouter, Routes, Route} from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Home from './Components/Home';
 import Register from './Components/Register';
 import Login from './Components/Login';
+import Header from './Components/Login';
+import Footer from './Components/Login';
+import Menu from './Components/Login';
+
 
 function App() {
   return (
     <HashRouter>
-      <Routes>
-        <Route exact path = '/register' element={<Register />}>
-        </Route>
+      <Container fluid>
+        <Row>
+          <Col>
+            <Header />
+          </Col>
+        </Row>
 
-        <Route exact path = '/login' element={<Login />}>
-        </Route>
+        <Row>
+          <Col>
+            <Menu />
+          </Col>
+        </Row>
 
-        <Route exact path = '/' element={<Home />}>
-        </Route>
-      </Routes>
+        <Routes>
+          <Route exact path = '/register' element={<Register />}>
+          </Route>
+
+          <Route exact path = '/login' element={<Login />}>
+          </Route>
+
+          <Route exact path = '/' element={<Home />}>
+          </Route>
+        </Routes>
+
+        <Row>
+          <Col>
+            <Footer />
+          </Col>
+        </Row>
+      </Container>
     </HashRouter>
   );
 }
