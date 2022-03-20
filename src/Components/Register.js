@@ -22,13 +22,13 @@ const Register = () => {
         setPassword(e.target.value)
     }
 
-    let onSumbitHandler = (e) => {
+    let onSubmitHandler = (e) => {
         local_temp_store.customers.push({name: name, email: email, password: password});
         navigate('/login');
     }
 
     return (
-        <Form onSumbit={onSumbitHandler}>
+        <Form onSubmit={onSubmitHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter Full Name" value={name} onChange={onNameChange}/>

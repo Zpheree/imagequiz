@@ -1,15 +1,15 @@
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import local_stor from "../data_access_layer/local"
-import { useNavigate } from "react-router-dom"
+import local_temp_store from '../data_access_layer/local_temp_storage';
+import { useNavigate } from "react-router-dom";
 
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [err, setErrors] = useState("");
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   let onEmailChange = (e) => {
     setEmail(e.target.value);
@@ -24,12 +24,12 @@ const Login = (props) => {
   let onSubmitHandler = (e) => {
     e.preventDefault();
 
-    let found = local_stor.customers.find(x =>
+    let found = local_temp_store.customers.find(x =>
       (x.email.toLowerCase() === email.toLowerCase()) && (x.password === password));
 
     if (found) {
-      props.customerLoggedIn(found.fname);
-      nav("/#");
+      props.customerLoggedIn(email);
+      navigate('/');
     } else {
       setErrors("No user with this email and password");
     }
@@ -52,7 +52,7 @@ const Login = (props) => {
          {err}
        </Form.Control.Feedback>
     </Form.Group>
-      <Button variant="primary" type="submit" className="btn">
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>

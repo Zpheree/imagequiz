@@ -1,6 +1,6 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import flowers from "./data.js";
+import flowers from '../data_access_layer/data.js';
 
 const Home = () => {
   const flower = []
