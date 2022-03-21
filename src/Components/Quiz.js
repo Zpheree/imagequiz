@@ -1,68 +1,69 @@
+import { Container, Card, ListGroup, ListGroupItem, Spinner, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import local_temp_store from "../data_access_layer/local_temp_storage";
-import { Container, Row, Col, Card, ListGroup, Spinner } from "react-bootstrap";
-import { useEffect, useState } from "react";
-
+import local_temp_storage from "../data_access_layer/local_temp_storage.js"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 const Quiz = () => {
-    const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
-    const [quiz, setQuiz] = useState(undefined);
-    const { id } = useParams();
-
-    useEffect(() => {
-        if (!quiz) {
-            let x = local_temp_store.getQuiz(id);
-            setQuiz(x);
-            console.log(x);
-        }
-    });
-
-    let clicked = (userAnswer) => {
-        let score = 0;
-        const ans = quiz.questions[currentQuestionNumber].answer
-        console.log(quiz.questions[setCurrentQuestionNumber]);
-
-        // if (userAnswer === ans) {
-        //     score++;
-        //     setCurrentQuestionNumber(setCurrentQuestionNumber++);
-        // }
-
-        
-        // if (userAnswer === ans) {
-        //     correct++;
-        //     alert("Correct!")
-        // } else {
-        //     tries++;
-        //     alert("Incorrect!")
-        //     }
-        };
-
-    return (
-        <Container>
-            <Row xs={1} md={3} className="g-4 text-center">
-                <Col>
-                    {quiz ?
-                        <Card className="h-100" >
-                            <Card.Img variant="top" src={quiz.questions[currentQuestionNumber].picture} />
-                            <Card.Body>
-                                <Card.Title>{quiz.name}</Card.Title>
-                                <Card.Text>
-                                    Let's take the quiz now!
-                                </Card.Text>
-                            </Card.Body>
-                            <ListGroup>
-                                {quiz.questions[currentQuestionNumber].choices.map(x =>
-                                    <ListGroup.Item action onClick={(() => clicked(x))}>{x}</ListGroup.Item>
-                                )}
-                            </ListGroup>
-                        </Card>
-                        :
-                        <Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </Spinner>}
-                </Col>
-            </Row>
-        </Container>
-    );
-};
-
+  const [cur, setCur] = useState(0);
+  const [quiz, setQuiz] = useState(undefined);
+  const [score, setScore] = useState(0);
+  const [done, setDone] = useState(undefined);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!quiz) {
+      let x = local_temp_storage.getQuiz(id);
+      setQuiz(x);
+    }
+  });
+  let answered = (pick) => {
+    if (pick === quiz.questions[cur].answer && score < 6) {
+      setScore(score + 1);
+    }
+    if (cur > 4) {
+      setDone(true);
+    } else {
+      setCur(cur + 1);
+    }
+  }
+  let reset = () => {
+    setDone(undefined);
+    setCur(0);
+    setScore(0);
+  }
+  let exit = () => {
+    navigate("/");
+  }
+  return (
+    <Container className="quiz">
+          {quiz ?
+            <Card className="h-100">
+              <Card.Img variant="top" src={quiz.questions[cur].picture} className="img"/>
+              <Card.Body>
+                <Card.Title>{score}/6</Card.Title>
+                <Card.Text>
+                <ListGroup>
+                  {quiz.questions[cur].choices.map(x =>
+                    <ListGroupItem onClick={() => answered(x)}>{x}</ListGroupItem>
+                  )}
+                  { done ?
+                    <Container>
+                      <Button onClick={reset}>Restart</Button>
+                      <Button onClick={exit}>Exit</Button>
+                    </Container>
+                  :
+                    <div></div>
+                  }
+                </ListGroup>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            :
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          }
+    </Container>
+  );
+}
 export default Quiz;
