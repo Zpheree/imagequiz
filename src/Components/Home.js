@@ -8,7 +8,7 @@ const Home = () => {
 
     let takeTheQuiz = (flowerName) => {
         navigate('/quiz/' + flowerName);
-    }
+    };
 
     return (
         <Container className="images">

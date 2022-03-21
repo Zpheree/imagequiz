@@ -16,11 +16,25 @@ const Quiz = () => {
         }
     });
 
-    // alertClicked(() => {
-    //     if (x === currentQuestionNumber) {
+    let clicked = (userAnswer) => {
+        let score = 0;
+        const ans = quiz.questions[currentQuestionNumber].answer
+        console.log(quiz.questions[setCurrentQuestionNumber]);
 
-    //     }
-    // });
+        // if (userAnswer === ans) {
+        //     score++;
+        //     setCurrentQuestionNumber(setCurrentQuestionNumber++);
+        // }
+
+        
+        // if (userAnswer === ans) {
+        //     correct++;
+        //     alert("Correct!")
+        // } else {
+        //     tries++;
+        //     alert("Incorrect!")
+        //     }
+        };
 
     return (
         <Container>
@@ -37,7 +51,7 @@ const Quiz = () => {
                             </Card.Body>
                             <ListGroup>
                                 {quiz.questions[currentQuestionNumber].choices.map(x =>
-                                    <ListGroup.Item>{x}</ListGroup.Item>
+                                    <ListGroup.Item action onClick={(() => clicked(x))}>{x}</ListGroup.Item>
                                 )}
                             </ListGroup>
                         </Card>
@@ -49,6 +63,6 @@ const Quiz = () => {
             </Row>
         </Container>
     );
-}
+};
 
 export default Quiz;
