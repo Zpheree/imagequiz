@@ -9,6 +9,7 @@ import Login from './Components/Login';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Menu from './Components/Menu';
+import Quiz from './Components/Quiz';
 import { useState } from 'react';
 
 
@@ -40,6 +41,9 @@ function App() {
           </Route>
 
           <Route exact path = '/login' element={<Login customerLoggedIn={customerLoggedInHandler}/>}>
+          </Route>
+
+          <Route exact path = '/quiz/:id' element={<Quiz />}>
           </Route>
 
           <Route exact path = '/' element={<Home />}>

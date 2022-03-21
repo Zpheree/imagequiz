@@ -1,40 +1,34 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import flowers from '../data_access_layer/data.js';
+import { Container, Row, Col, Card } from "react-bootstrap";
+import local_temp_store from "../data_access_layer/local_temp_storage";
+import { useNavigate } from "react-router-dom";
+
 
 const Home = () => {
-  const flower = []
-  let inner = []
-  for (var i = 0; i < flowers.length; i++) {
-    if (i % 4 === 0) {
-        flower.push(inner);
-        inner = []
+    const navigate = useNavigate();
+
+    let takeTheQuiz = (flowerName) => {
+        navigate('/quiz/' + flowerName);
     }
-    inner.push(flowers[i]);
-  }
-  inner.push("")
-  flower.push(inner);
 
-  return (
-
-    <Container className="images">
-        {flower.map ((inn, i) => {
-          return (
-            <Row>
-              { inn.map ((image, j) => {
-                return (
-                  <Col className="imgCon" >
-                    <Image className="img" src={image.picture}/>
-                    <p>{image.name}</p>
-                  </Col>
-                );
-              })}
+    return (
+        <Container className="images">
+            <Row xs={1} md={3} className="g-4 text-center">
+                {local_temp_store.getFlowers().map((x, index) => (
+                    <Col key={index}>
+                        <Card className="h-100" onClick={() => takeTheQuiz(x.name)}>
+                            <Card.Img variant="top" src={x.picture} className="h-75"/>
+                            <Card.Body>
+                                <Card.Title>{x.name}</Card.Title>
+                                <Card.Text>
+                                    
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
             </Row>
-          );
-        })}
-
-    </Container>
-  );
+        </Container>
+    );
 }
 
 
