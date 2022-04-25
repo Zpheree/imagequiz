@@ -1,63 +1,63 @@
-import './App.css';
-import {HashRouter, Routes, Route} from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Home from './Components/Home';
-import Register from './Components/Register';
-import Login from './Components/Login';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Menu from './Components/Menu';
-import Quiz from './Components/Quiz';
-import { useState } from 'react';
-
-
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Container } from "react-bootstrap";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import NavMenu from "./components/Nav";
+import Quiz from "./components/Quiz";
+import { useState } from "react";
 
 function App() {
-  const [customer, setCustomer] = useState('');
-
+  const [user, setUser] = useState(undefined);
   let customerLoggedInHandler = (customerEmail) => {
-    setCustomer(customerEmail);
+    setUser(customerEmail);
   }
 
   return (
-    <HashRouter>
-      <Container fluid>
-        <Row>
-          <Col>
-            <Header />
-          </Col>
-        </Row>
+    <div className="App">
 
-        <Row>
-          <Col>
-            <Menu customer={customer}/>
-          </Col>
-        </Row>
+      <HashRouter>
+        <Container fluid>
+          <Row>
+            <Col>
+              <Header />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <NavMenu user={user}/>
+            </Col>
+          </Row>
 
-        <Routes>
-          <Route exact path = '/register' element={<Register />}>
-          </Route>
+          <Routes>
+            <Route path="/" element={<Home />}>
+            </Route>
+            <Route path="/login" element={<Login customerLoggedIn={customerLoggedInHandler} />}>
+            </Route>
+            <Route path="/register" element={<Register />}>
+            </Route>
+            <Route path="/quiz/:id" element={<Quiz user={user}/>}>
+            </Route>
+          </Routes>
 
-          <Route exact path = '/login' element={<Login customerLoggedIn={customerLoggedInHandler}/>}>
-          </Route>
+          <Row>
+            <Col>
+              <Footer />
+            </Col>
+          </Row>
 
-          <Route exact path = '/quiz/:id' element={<Quiz />}>
-          </Route>
+        </Container>
+      </HashRouter>
 
-          <Route exact path = '/' element={<Home />}>
-          </Route>
-        </Routes>
+    </div>
 
-        <Row>
-          <Col>
-            <Footer />
-          </Col>
-        </Row>
-      </Container>
-    </HashRouter>
+
   );
+
 }
 
 export default App;

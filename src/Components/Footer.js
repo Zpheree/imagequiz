@@ -1,9 +1,16 @@
+import { Container, Row, Col } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Footer = () => {
-    return (
-        <div>
-            This is my Footer
-        </div>
-    );
+  return(
+    <Container className="App-footer">
+      <Row>
+        <Col>
+          <h5>This is the Footer </h5>
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default Footer;
