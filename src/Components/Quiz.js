@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 
-import apiAccess from '../communication/APIAccess';
+import apiAccess from '../Communication/APIAccess';
 
 const Quiz = (props) => {
 
@@ -18,7 +18,18 @@ const Quiz = (props) => {
   useEffect(() => {
     apiAccess.getQuiz(id)
     .then(x => {
-        setQuiz(x.questions);
+        if (x.signedIn) {
+            if (x.result) {
+                setQuiz(x.result.questions);
+            } else {
+                alert(x.message);
+                navigate('/');
+            }
+        } else {
+          alert("Please log in first!")
+          navigate('/login');
+        }
+
     })
     .catch(e => {
         console.log(e);
@@ -27,19 +38,21 @@ const Quiz = (props) => {
   }, []);
 
   let answered = (pick) => {
-    if (pick === quiz[cur].answer && score < 6) {
-      setScore(score + 1);
-    }
-    if (cur >= quiz.length-1) {
-      apiAccess.addScore(props.user, id, score)
-      .then(x => console.log(x))
-      .catch(e => {
-          console.log(e);
-          alert('Something went wrong.')
-      })
-      setDone(true);
-    } else {
-      setCur(cur + 1);
+    if (!done) {
+        if (pick === quiz[cur].answer) {
+          setScore(score + 1);
+        }
+        if (cur >= quiz.length-1) {
+          apiAccess.addScore(props.user, id, score)
+          .then(x => console.log(x))
+          .catch(e => {
+              console.log(e);
+              alert('Something went wrong.')
+          })
+          setDone(true);
+        } else {
+          setCur(cur + 1);
+        }
     }
   }
 

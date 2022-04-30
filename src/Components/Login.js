@@ -1,18 +1,17 @@
 import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import apiAccess from '../communication/APIAccess';
-
-
+import apiAccess from '../Communication/APIAccess';
 
 const Login = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    const { from } = useParams();
 
 
     let onEmailChanged = (e) => {
@@ -29,7 +28,12 @@ const Login = (props) => {
         .then(x => {
             if(x.done) {
                 props.customerLoggedIn(email);
-                navigate('/');
+                console.log(from);
+                if (from) {
+                  navigate("/quiz/" + from);
+                } else {
+                  navigate('/');
+                }
             } else {
                 alert('The credentials are not valid!');
             }

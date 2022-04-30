@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import apiAccess from '../communication/APIAccess';
+import apiAccess from '../Communication/APIAccess';
 
 
 const Register = () => {
@@ -27,13 +27,13 @@ const Register = () => {
     let onSubmitHandler = (e) => {
         e.preventDefault();
         apiAccess.addCustomer(name, email, password)
-        .then(x => navigate('/login'))
+        .then(x => navigate("/login"))
         .catch(e =>
             {
                 console.log(e);
                 alert('Registeration failed.');
             }
-            );
+        );
     }
 
     return (

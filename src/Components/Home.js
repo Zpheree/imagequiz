@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import apiAccess from '../communication/APIAccess';
+import apiAccess from '../Communication/APIAccess';
 
 const Home = () => {
     const [flowers, setFlowers] = useState([]);
