@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import apiAccess from '../Communication/APIAccess';
 import congifuration from '../configuration';
+
 const NavMenu = (props) => {
   let google = `${congifuration.backendAddress}/auth/google`;
 

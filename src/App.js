@@ -55,7 +55,7 @@ function App() {
             <Route path="/register" element={<Register />}>
             </Route>
             <Route path="/quiz/:id" element={
-              <ProtectedRoute user={user}><Quiz user={user}/></ProtectedRoute>
+              <ProtectedRoute user={user}><Quiz /></ProtectedRoute>
             }>
             </Route>
           </Routes>
