@@ -1,6 +1,6 @@
 
 let congifuration = {
-    backendAddress: "https://zpheree-imagequiz-api.herokuapp.com"
+    backendAddress: "https://localhost:4002"
 };
 
 export default congifuration;

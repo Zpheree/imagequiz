@@ -4,7 +4,6 @@ import { Row, Col, Container } from "react-bootstrap";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
-import FederatedLogin from './Components/FederatedLogin';
 import Register from "./Components/Register";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -50,12 +49,10 @@ function App() {
             </Route>
             <Route path="/login" element={<Login customerLoggedIn={customerLoggedInHandler} />}>
             </Route>
-            <Route path='/google/:username/:name' element={<FederatedLogin provider="google" customerLoggedIn={customerLoggedInHandler} />}>
-            </Route>
             <Route path="/register" element={<Register />}>
             </Route>
             <Route path="/quiz/:id" element={
-              <ProtectedRoute user={user}><Quiz /></ProtectedRoute>
+              <ProtectedRoute user={user}><Quiz user={user}/></ProtectedRoute>
             }>
             </Route>
           </Routes>
