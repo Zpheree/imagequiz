@@ -12,5 +12,5 @@ const Footer = () => {
     </Container>
   );
 }
-
+//plz
 export default Footer;

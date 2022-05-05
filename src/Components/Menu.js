@@ -1,7 +1,7 @@
 import { Navbar, Nav } from "react-bootstrap";
 
 import apiAccess from '../Communication/APIAccess';
-
+//plz
 const NavMenu = (props) => {
 
   let logout = () => {

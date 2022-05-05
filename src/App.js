@@ -11,7 +11,7 @@ import NavMenu from "./Components/Menu";
 import Quiz from "./Components/Quiz";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-
+//plz
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("user"));

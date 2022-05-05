@@ -2,7 +2,7 @@ import { Container, Card, ListGroup, ListGroupItem, Spinner, Button } from "reac
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-
+//plz
 import apiAccess from '../Communication/APIAccess';
 
 const Quiz = (props) => {
