@@ -1,4 +1,4 @@
-let backendAddress = 'https://zpheree-imagequiz-api.herokuapp.com';
+let backendAddress = 'http://localhost:4002'; //'https://zpheree-imagequiz-api.herokuapp.com'
 
 let apiAccess = {
     addCustomer: (name, email, password) => {
