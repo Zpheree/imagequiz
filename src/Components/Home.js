@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-//plz
+
 import apiAccess from '../Communication/APIAccess';
 
 const Home = () => {
@@ -16,12 +16,12 @@ const Home = () => {
     }
 
     useEffect(() => {
-         apiAccess.getFlowers()
-         .then(x => setFlowers(x))
-         .catch(e => {
-             console.log(e);
-             alert('Something went wrong.')
-         })
+        apiAccess.getFlowers()
+            .then(x => setFlowers(x))
+            .catch(e => {
+                console.log(e);
+                alert('Something went wrong.')
+            })
     }, []);
 
     return (

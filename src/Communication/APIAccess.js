@@ -1,5 +1,6 @@
-let backendAddress = 'http://localhost:4002'; //'https://zpheree-imagequiz-api.herokuapp.com'
-//plz
+import configuration from '../configuration';
+let backendAddress = configuration.backendAddress;
+
 let apiAccess = {
     addCustomer: (name, email, password) => {
          return fetch(`${backendAddress}/register`, {

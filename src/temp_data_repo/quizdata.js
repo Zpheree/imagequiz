@@ -1,5 +1,5 @@
 import flowers from './flowers';
-//plz
+
 let generateQuestions = () => {
     let questions = [];
     let choiceIndex = 0;
