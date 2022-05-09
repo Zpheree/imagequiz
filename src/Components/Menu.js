@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import apiAccess from '../Communication/APIAccess';
 import configuration from '../configuration';
 
-const NavMenu = (props) => {
+const Menu = (props) => {
   let google = `${configuration.backendAddress}/auth/google`;
 
   let logout = () => {
@@ -52,4 +52,4 @@ const NavMenu = (props) => {
   );
 }
 
-export default NavMenu;
+export default Menu;
