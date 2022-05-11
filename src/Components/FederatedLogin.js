@@ -15,7 +15,6 @@ let FederatedLogin = (props) => {
              props.customerLoggedIn(username);
              navigate('/');
           } else {
-              // change the alert to a nice bootstrap modal!
              alert('Something went wrong!');
              navigate('/');
           }

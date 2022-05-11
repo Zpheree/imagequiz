@@ -81,23 +81,6 @@ let apiAccess = {
             });
     },
 
-    addScore: (quizTaker, quizName, score) => {
-        return fetch(`${backendAddress}/score`, {
-            method: 'Post',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Credentials': true
-            },
-            body: JSON.stringify({ quizTaker, quizName, score })
-        })
-            .then(x => x.json())
-            .then(x => {
-                console.log(x);
-                return x;
-            });
-    },
-
     isLoggedIn: () => {
         return fetch(`${backendAddress}/isloggedin`, {
             method: 'Get',
